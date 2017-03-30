@@ -73,6 +73,15 @@ public class Plugin_topicbot extends IrcPlugin {
                 if(event.direction==IrcDirection.SENDING) break;//ignore outgoing messages.
                 IrcMessage im = event.message;//gives the to, from, text part
                 if(im.from.nick.toUpperCase().endsWith("BOT")) break;//ignore posts from bots.
+                
+                String im_text_low=im.text.toLowerCase();
+                
+                if(im_text_low.contains("cicada") && im_text_low.contains("puzzle") && im_text_low.contains("2017") && im_text_low.contains("?")){
+                    IrcMessage reply=im.getReply(session.account,"If it's not pgp signed it's probably fake.",false);
+                    postMessage(reply);
+                }
+                
+                
                 if(im.text.startsWith("~helloworld")){//check if post was a command
                     IrcMessage reply = im.getReply(session.account,"Hello World!",false);//reply from our account, to channel or PM, not directly to the sender.
                     postMessage(reply);//queue reply for sending.
