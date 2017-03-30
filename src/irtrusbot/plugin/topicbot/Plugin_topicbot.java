@@ -76,7 +76,7 @@ public class Plugin_topicbot extends IrcPlugin {
                 
                 String im_text_low=im.text.toLowerCase();
                 
-                if(im_text_low.contains("cicada") && im_text_low.contains("puzzle") && im_text_low.contains("2017") && im_text_low.contains("?")){
+                if(im.to.equalsIgnoreCase("#cicadasolvers") && im_text_low.contains("puzzle") && im_text_low.contains("2017") && im_text_low.contains("?")){
                     IrcMessage reply=im.getReply(session.account,"If it's not pgp signed it's probably fake.",false);
                     postMessage(reply);
                 }
